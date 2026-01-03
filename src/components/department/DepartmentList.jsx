@@ -13,7 +13,7 @@ const DepartmentList = () => {
   }
   const fetchDepartment = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/department', {
+      const response = await axios.get('https://employee-backend-smoky.vercel.app/api/department', {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }

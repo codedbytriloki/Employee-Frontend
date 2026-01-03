@@ -12,7 +12,7 @@ const Table = () => {
 
   const fetchEmployee = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/leave', {
+      const response = await axios.get('https://employee-backend-smoky.vercel.app/api/leave', {
         headers: {
           "Authorization": `bearer ${localStorage.getItem('token')}`
         }

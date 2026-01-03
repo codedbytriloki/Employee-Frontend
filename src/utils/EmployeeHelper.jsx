@@ -40,7 +40,7 @@ export const columns = [
 export const fetchDepartment = async () => {
   let departments;
   try {
-    const response = await axios.get('http://localhost:4000/api/department', {
+    const response = await axios.get('https://employee-backend-smoky.vercel.app/api/department', {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem('token')}`
       }
@@ -60,7 +60,7 @@ export const fetchDepartment = async () => {
 export const getEmployees = async (id) => {
   let employees;
   try {
-    const response = await axios.get(`http://localhost:4000/api/employee/department/${id}`, {
+    const response = await axios.get(`https://employee-backend-smoky.vercel.app/api/employee/department/${id}`, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem('token')}`
       }

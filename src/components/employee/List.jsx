@@ -12,7 +12,7 @@ const List = () => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/employee', {
+        const response = await axios.get('https://employee-backend-smoky.vercel.app/api/employee', {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
@@ -26,7 +26,7 @@ const List = () => {
               dep_name: emp.department.dep_name,
               name: emp.userId.name,
               dob: new Date(emp.dob).toLocaleDateString(),
-              profileImage: <img alt='' className='rounded-full w-10' src={`http://localhost:4000/${emp.userId.profileImage}`} />,
+              profileImage: <img alt='' className='rounded-full w-10' src={`https://employee-backend-smoky.vercel.app/${emp.userId.profileImage}`} />,
               action: (<EmployeeButtons _id={emp._id} Id={emp._id} />),
             }
           ))

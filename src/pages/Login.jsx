@@ -14,7 +14,7 @@ const Login = () => {
 
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/auth/login", { email, password });
+      const response = await axios.post("https://employee-backend-smoky.vercel.app/api/auth/login", { email, password });
       if (response.data.success) {
         login(response.data.user);
         localStorage.setItem("token", response.data.token)
