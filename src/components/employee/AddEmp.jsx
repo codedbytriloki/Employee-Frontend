@@ -46,8 +46,10 @@ const AddEmp = () => {
       console.error("Error details:", error);
       if (error.response && error.response.data && error.response.data.error) {
         alert(error.response.data.error);
+        console.log(error.response.data.error);
       } else {
         alert("Failed to add employee. Check console for details.");
+        console.log(error);
       }
     }
   }
