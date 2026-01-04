@@ -42,11 +42,11 @@ const Login = () => {
           {error && <p className='text-red-500 mb-4'>{error}</p>}
           <div className='mb-4'>
             <label htmlFor="email" className='block text-gray-700' >Email</label>
-            <input type="email" placeholder='Enter Email' className='w-full px-3 py-2 border' onChange={(e) => setEmail(e.target.value)} required />
+            <input type="email" placeholder='Enter Email' className='w-full px-3 py-2 border' onChange={(e) => setEmail(e.target.value)} autoComplete="email" required />
           </div>
           <div className='mb-4'>
             <label htmlFor="password" className='block text-gray-700'>Password</label>
-            <input type="password" placeholder='*********' className='w-full px-3 py-2 border' onChange={(e) => setPassword(e.target.value)} required />
+            <input type="password" placeholder='*********' className='w-full px-3 py-2 border' onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" required />
           </div>
           <div className='mb-4 flex items-center justify-between'>
             <label className='inline-flex items-center'>

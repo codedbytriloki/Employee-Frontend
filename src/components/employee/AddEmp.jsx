@@ -35,16 +35,19 @@ const AddEmp = () => {
     try {
       const response = await axios.post("https://employee-backend-smoky.vercel.app/api/employee/add", formDataObj, {
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "multipart/form-data"
         }
       })
       if (response.data.success) {
         navigate('/admin-dashboard/employees')
       }
     } catch (error) {
-      if (error.response && !error.response.data.success) {
-        // handle error
+      console.error("Error details:", error);
+      if (error.response && error.response.data && error.response.data.error) {
         alert(error.response.data.error);
+      } else {
+        alert("Failed to add employee. Check console for details.");
       }
     }
   }
