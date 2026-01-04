@@ -28,18 +28,32 @@ const AddEmp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate that all required fields are filled
+    if (!formData.name || !formData.email || !formData.employeeId || !formData.department || !formData.salary || !formData.password) {
+      alert("Please fill all required fields");
+      return;
+    }
+
     const formDataObj = new FormData()
     Object.keys(formData).forEach((key) => {
-      formDataObj.append(key, formData[key])
+      if (formData[key] !== undefined && formData[key] !== null && formData[key] !== '') {
+        formDataObj.append(key, formData[key])
+      }
     })
+
+    // Log what we're sending
+    console.log("Form data keys:", Array.from(formDataObj.keys()));
+
     try {
       const response = await axios.post("https://employee-backend-smoky.vercel.app/api/employee/add", formDataObj, {
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem('token')}`,
-          "Content-Type": "multipart/form-data"
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+          // Don't set Content-Type - axios will set it with boundary for multipart/form-data
         }
       })
       if (response.data.success) {
+        alert("Employee added successfully!");
         navigate('/admin-dashboard/employees')
       }
     } catch (error) {
