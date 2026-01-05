@@ -35,6 +35,11 @@ const AddEmp = () => {
       return;
     }
 
+    if (!formData.image) {
+      alert("Please upload an image");
+      return;
+    }
+
     const formDataObj = new FormData()
     Object.keys(formData).forEach((key) => {
       if (formData[key] !== undefined && formData[key] !== null && formData[key] !== '') {
@@ -52,9 +57,12 @@ const AddEmp = () => {
           // Don't set Content-Type - axios will set it with boundary for multipart/form-data
         }
       })
+      console.log("Response:", response.data);
       if (response.data.success) {
         alert("Employee added successfully!");
         navigate('/admin-dashboard/employees')
+      } else {
+        alert(response.data.error || "Failed to add employee");
       }
     } catch (error) {
       console.error("Error details:", error);
